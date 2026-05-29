@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  ArrowUpRight, Sparkle, Palette, PenTool, 
-  Layers, Type, Aperture, Camera, Brush, Box, Wand2,
-  Send, CheckCircle2, ArrowRight, GraduationCap,
-  Briefcase, Code2, Server, Laptop, ChevronDown, Award,
-  ChevronLeft, ChevronRight, Layout, Terminal, Code, Database, Zap
+  ArrowUpRight, Sparkle, ArrowRight, ChevronDown,
+  ChevronLeft, ChevronRight, Layout, Terminal,
+  GraduationCap, Briefcase, Code2, Server, Laptop,
+  Award, Code, Database, Zap, CheckCircle2, Send
 } from 'lucide-react';
 import { GlassModal } from './GlassModal';
 
@@ -51,43 +50,6 @@ interface TestimonialItem {
 }
 
 // Custom inline SVG icons because standard Lucide React does not bundle brand icons in its basic set.
-const Figma = ({ className }: { className?: string; strokeWidth?: number }) => (
-  <svg 
-    viewBox="0 0 38 57" 
-    className={className} 
-    fill="currentColor"
-  >
-    <path d="M19 0a9.5 9.5 0 0 0-9.5 9.5 9.5 9.5 0 0 0 9.5 9.5h9.5V9.5A9.5 9.5 0 0 0 19 0zM9.5 19a9.5 9.5 0 0 0 0 19H19V19H9.5zM28.5 19a9.5 9.5 0 0 0-9.5 9.5 9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5 9.5 9.5 0 0 0-9.5-9.5zM19 38a9.5 9.5 0 0 0-9.5 9.5A9.5 9.5 0 0 0 19 57a9.5 9.5 0 0 0 9.5-9.5V38H19z" />
-  </svg>
-);
-
-const Framer = ({ className }: { className?: string; strokeWidth?: number }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    className={className} 
-    fill="currentColor"
-  >
-    <path d="M5 0h14v8H5zm0 8h14l-7 8zm7 8h7v8z" />
-  </svg>
-);
-
-const Chrome = ({ className }: { className?: string; strokeWidth?: number }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    className={className} 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="1.5" 
-    strokeLinecap="round" 
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <circle cx="12" cy="12" r="4" />
-    <line x1="21.17" y1="8" x2="12" y2="8" />
-    <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
-    <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
-  </svg>
-);
 
 const Github = ({ className }: { className?: string; strokeWidth?: number }) => (
   <svg 
