@@ -3,7 +3,7 @@ import {
   ArrowUpRight, Sparkle, ArrowRight, ChevronDown,
   ChevronLeft, ChevronRight, Layout, Terminal,
   GraduationCap, Briefcase, Code2, Server, Laptop,
-  Award, Code, Database, Zap, CheckCircle2, Send
+  Award, Code, Database, Zap, CheckCircle2
 } from 'lucide-react';
 import { GlassModal } from './GlassModal';
 
