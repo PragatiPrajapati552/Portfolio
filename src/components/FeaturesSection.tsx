@@ -288,13 +288,7 @@ export const FeaturesSection: React.FC = () => {
   
   // Modal states
   const [selectedTimelineItem, setSelectedTimelineItem] = useState<TimelineItem | null>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTeamUpOpen, setIsTeamUpOpen] = useState(false);
-  
-  // Contact Form state
-  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Resume Profile Data for Pragati Prajapati
   const resumeData = {
@@ -303,7 +297,7 @@ export const FeaturesSection: React.FC = () => {
     description: "A Jaipur-based Full Stack Developer shaping high-performance web applications, production-ready frontends, and robust backend systems. Specializing in the MERN stack and Next.js, I build scalable digital solutions with focus and intention.",
     timeline: [
       {
-        year: "2026-Now",
+        year: "Mar 2026 - May 2026",
         role: "Full Stack Engineer",
         company: "UpliftAid",
         details: [
@@ -518,19 +512,7 @@ export const FeaturesSection: React.FC = () => {
     }
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setIsContactOpen(false);
-        setContactForm({ name: '', email: '', message: '' });
-      }, 2000);
-    }, 1200);
-  };
+
 
   return (
     <div className="w-full bg-[#0a0a0a] text-white selection:bg-white/20 selection:text-white font-sans scroll-smooth">
@@ -756,11 +738,9 @@ export const FeaturesSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* Tooltip Float Overlay - Styled absolutely to not affect visual placement of scroll marquees! */}
               {hoveredSoftware && (
-                <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 px-3.5 py-1.5 bg-black/90 border border-white/10 rounded-xl text-center shadow-2xl backdrop-blur-md animate-fade-in w-[80%]">
+                <div className="absolute top-12 left-1/2 -translate-x-1/2 z-20 px-3.5 py-1.5 bg-black/90 border border-white/10 rounded-xl text-center shadow-2xl backdrop-blur-md animate-fade-in">
                   <span className="text-[10px] font-bold text-white uppercase tracking-wider block">{hoveredSoftware}</span>
-                  <span className="text-[9.5px] text-white/50 block line-clamp-1 truncate">{resumeData.softwareDetails[hoveredSoftware]}</span>
                 </div>
               )}
 
@@ -847,14 +827,7 @@ export const FeaturesSection: React.FC = () => {
                 </a>
               </div>
 
-              {/* TOP-RIGHT - ArrowUpRight icon button absolutely placed */}
-              <button 
-                onClick={() => setIsContactOpen(true)}
-                className="absolute top-5 right-5 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 active:scale-90 border border-white/10 hover:border-white/30 transition-all flex items-center justify-center text-white cursor-pointer shadow-md z-20"
-                aria-label="Open contact form"
-              >
-                <ArrowUpRight className="h-5 w-5" strokeWidth={1.5} />
-              </button>
+
 
             </div>
           </div>
@@ -1440,78 +1413,7 @@ export const FeaturesSection: React.FC = () => {
         )}
       </GlassModal>
 
-      {/* ========================================================================= */}
-      {/* MODAL 2: REACH ME CONTACT SHEET */}
-      {/* ========================================================================= */}
-      <GlassModal 
-        isOpen={isContactOpen} 
-        onClose={() => setIsContactOpen(false)}
-        title="Send a Direct Message"
-      >
-        {isSubmitted ? (
-          <div className="flex flex-col items-center justify-center py-10 gap-4 text-center animate-fade-in">
-            <CheckCircle2 className="h-16 w-16 text-emerald-400 animate-bounce" strokeWidth={1.5} />
-            <h3 className="text-xl font-normal">Message Sent Gracefully!</h3>
-            <p className="text-xs text-white/50 max-w-xs">
-              Thank you for reaching out. I have received your message and will respond as soon as possible.
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleContactSubmit} className="flex flex-col gap-4 text-left">
-            <p className="text-xs text-white/60 mb-2 leading-[1.6]">
-              Fill out the details below to start a conversation. Your message will be routed directly to my workspace.
-            </p>
 
-            <div className="flex flex-col gap-1">
-              <label htmlFor="name" className="text-[10px] uppercase tracking-wider text-white/50">Your Name</label>
-              <input 
-                id="name"
-                type="text" 
-                required
-                value={contactForm.name}
-                onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
-                placeholder="Elena Brooks"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/20 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label htmlFor="email" className="text-[10px] uppercase tracking-wider text-white/50">Email Address</label>
-              <input 
-                id="email"
-                type="email" 
-                required
-                value={contactForm.email}
-                onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
-                placeholder="elena@halcyon.com"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/20 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all"
-              />
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label htmlFor="message" className="text-[10px] uppercase tracking-wider text-white/50">Message Body</label>
-              <textarea 
-                id="message"
-                required
-                rows={4}
-                value={contactForm.message}
-                onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
-                placeholder="Hi Pragati, we would love to connect with you regarding our Full Stack role..."
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white placeholder-white/20 focus:outline-none focus:border-white/30 focus:bg-white/[0.08] transition-all resize-none"
-              />
-            </div>
-
-            <button 
-              type="submit"
-              disabled={isSubmitting}
-              className="mt-2 w-full py-3 rounded-xl bg-white text-black font-semibold text-xs tracking-wide hover:bg-white/90 active:scale-95 transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 cursor-pointer"
-            >
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-              <Send className="h-3.5 w-3.5" />
-            </button>
-          </form>
-        )}
-      </GlassModal>
 
       {/* ========================================================================= */}
       {/* MODAL 3: LET'S TEAM UP TODAY SHEET */}
